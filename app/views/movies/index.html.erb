@@ -1,0 +1,9 @@
+<h1>Listing Movies</h1> 
+<%= link_to 'New Movie', new_movie_path, class: "btn btn-dark btn-sm" %>
+<hr />
+
+<% @movies.each do |movie| %> 
+<%= render partial: 'movie', locals: { movie: movie } %>
+ <% end %>
+
+
