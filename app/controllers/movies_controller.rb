@@ -55,7 +55,6 @@ class MoviesController < ApplicationController
   def downvote 
     @movie.downvote_from current_user 
     redirect_to movies_path
-
   end
 
   # DELETE /movies/1 or /movies/1.json
