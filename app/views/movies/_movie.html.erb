@@ -1,12 +1,23 @@
 <div id="<%= dom_id movie %>">
-  <p>
-    <strong>Title:</strong>
-    <%= movie.title %>
-  </p>
 
-  <p>
-    <strong>Image:</strong>
-    <%= movie.image %>
-  </p>
-
+<div class="col-sm-6 col-md-4"> 
+<h2><%= movie.title %></h2>
+<div class="thumbnail">
+<%= image_tag(movie.image, size: "200x200", class: "img-thumbnail mb-2 mt-2") %>
+</div>
+<div class="caption mt-2 mb-3"> 
+<%= link_to like_movie_path(movie), class: "like", method: :put do %>
+    <button type="button" class="btn btn-success btn-sm">
+    <i class="bi-hand-thumbs-up" style="color: white;"></i>
+    <span class="badge"><%= movie.get_upvotes.size %></span>
+    </button>
+<% end %>
+<%= link_to unlike_movie_path(movie), class: "like", method: :put do %>
+    <button type="button" class="btn btn-danger btn-sm">
+     <i class="bi-hand-thumbs-down" style="color: white;"></i>
+    <span class="badge"><%= movie.get_downvotes.size %></span>
+    </button>
+<% end %>
+</div>
+</div>
 </div>

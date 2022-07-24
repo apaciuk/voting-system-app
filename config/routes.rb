@@ -1,7 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :movies
+  resources :movies do 
+    member do 
+      put "like" => "movies#upvote"
+      put "unlike" => "movies#downvote"
+    end
+  end
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
 authenticate :user, lambda { |u| u.admin? } do
